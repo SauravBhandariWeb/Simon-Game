@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simon Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="background">
+    <!-- Using common classes to minimize redundancy -->
+    <span class="ball"></span>
+    <span class="ball"></span>
+    <span class="ball"></span>
+    <span class="ball"></span>
+    <span class="ball"></span>
+    <span class="ball"></span>
+</div>
+
+
+
+<nav>
+    <div style="--clr:rgba(255, 0, 0,.645);"></div>
+    <div style="--clr:rgba(0, 128, 0, 0.645);"></div>
+    <div style="--clr:rgba(255, 255, 0, .645);"></div>
+    <div style="--clr:rgba(0, 0, 255, .645);"></div>
+</nav>
+    <div class="headings">
+        <p>Press any key to the entire page</p>
+    </div> 
+    <div class="container">
+        <div id="first" style="--clr:rgba(255, 0, 0,.645);"></div>
+        <div id="second" style="--clr:rgba(0, 128, 0, 0.645);"></div>
+        <div id="third" style="--clr:rgba(255, 255, 0, .645);"></div>
+        <div id="fourth" style="--clr:rgba(0, 0, 255, .645);"></div>
+    </div>
+    <audio src="assets/fantasy-game-sword-cut-sound-effect-get-more-on-my-patreon-339824.mp3" class="btnEffect"></audio>
+    <audio src="/assets/game-over-2-sound-effect-230463.mp3" class="gameOver"></audio>
+    <script src="script.js"></script>
+</body>
+
+</html>
