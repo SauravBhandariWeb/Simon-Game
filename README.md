@@ -24,9 +24,7 @@ Press any key to start the game, follow the pattern, and test how far your memor
 
 ---
 
-## 📷 Preview  
 
-![Game Screenshot](./assets/"SimonGameImage.png")  
 
 
 ---
