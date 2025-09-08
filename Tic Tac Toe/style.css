@@ -1,0 +1,318 @@
+/* ----------------------------
+   TICTACTOE STYLING (CSS ONLY)
+   🎮 Fixed-size buttons, glassmorphism,
+   glow effects & caption included
+   ---------------------------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    text-transform: capitalize;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Page background + center */
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #fff;
+    padding: 20px;
+}
+
+/* Header / Nav */
+header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+nav {
+    display: grid;
+    place-items: center;
+    height: 64px;
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.06);
+    color: #00eaff;
+    text-shadow: 0 0 8px rgba(0, 234, 255, 0.25);
+    backdrop-filter: blur(8px);
+    letter-spacing: 1.5px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    z-index: 10;
+}
+
+/* Optional caption under nav */
+.caption {
+    margin-top: 70px;
+    /* leave space for header */
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.85);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.03), rgba(0, 0, 0, 0.06));
+    padding: 6px 12px;
+    border-radius: 999px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(6px);
+}
+
+/* Main container (board) */
+.container { 
+    width: 420px;
+    max-width: 94vw;
+    aspect-ratio: 1;
+    margin-top: 18px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 2px solid rgba(0, 234, 255, 0.15);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(0, 0, 0, 0.12));
+    box-shadow: 0 10px 40px rgba(8, 30, 36, 0.6), 0 0 30px rgba(0, 234, 255, 0.06) inset;
+    backdrop-filter: blur(10px) saturate(120%);
+    transition: transform 0.28s cubic-bezier(.2, .9, .2, 1), box-shadow 0.3s ease;
+}
+
+.container:hover {
+    transform: translateY(-6px) scale(1.01);
+}
+
+/* Players area (top) */
+.players {
+    height: 92px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 12px;
+    gap: 12px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0.02));
+    border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+}
+.players_level{
+    color: #ffdd59;
+    display: flex;
+    gap: 200px;
+    text-align: center;
+}
+#player1,
+#player2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    color: #ffdd59;
+    font-weight: 700;
+}
+
+.player-label {
+    font-size: 0.85rem;
+    opacity: 0.9;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.player-score {
+    font-size: 1.35rem;
+    color: #ffd966;
+    text-shadow: 0 4px 18px rgba(0, 0, 0, 0.6);
+}
+
+/* Player buttons (fixed-size & glow) */
+.players button {
+    width: 90px;
+    height: 60px;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    font-size: 1.05rem;
+    border: none;
+    background: linear-gradient(135deg, #ff6a00, #ee0979);
+    color: #fff;
+    font-weight: 700;
+    box-shadow: 0 6px 20px rgba(238, 9, 121, 0.12), 0 0 12px rgba(255, 106, 0, 0.18);
+    transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.12s ease;
+    -webkit-tap-highlight-color: transparent;
+    pointer-events: auto;
+}
+
+/* Hover uses lift effect only (not scale on active) */
+.players button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 28px rgba(238, 9, 121, 0.18);
+}
+
+/* ACTIVE: NO SIZE CHANGE, only color & shadow */
+.players button:active {
+    transform: translateY(0);
+    /* ensure no shrink/scale */
+    background: linear-gradient(135deg, #ee0979, #ff6a00);
+    box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.35), 0 6px 24px rgba(255, 106, 0, 0.32);
+}
+
+/* Game grid area */
+.container .container-btns {
+    flex: 1;
+    display: grid;
+    flex-direction: row;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 7px;
+    place-items: center;
+    box-shadow: 2px 2px 5px black;
+    align-content: center;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.06), rgba(255, 255, 255, 0.01));
+}
+
+/* Grid cell buttons - primary interactive elements */
+.container-btns button {
+  text-shadow: 2px 2px 5px black;
+    width: 90%;
+    height: 100px;
+    min-height: 88px;
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    font-size: 2.1rem;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px black;
+    border: 2px solid rgba(0, 234, 255, 0.12);
+    background: rgba(255, 255, 255, 0.03);
+    color: #ffffff;
+    font-weight: 700;
+    text-shadow: 0 0 8px rgba(0, 234, 255, 0.12);
+    transition: background 0.25s ease, box-shadow 0.25s ease, color 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+}
+
+/* Hover glow (no scaling) */
+.container-btns button:hover {
+    background: linear-gradient(145deg, rgba(0, 234, 255, 0.14), rgba(255, 0, 195, 0.12));
+    color: #001;
+    box-shadow: 0 8px 30px rgba(0, 234, 255, 0.14), 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+/* Active press: fixed size; strong inner glow */
+.container-btns button:active {
+    transform: none;
+    /* IMPORTANT: prevents size change */
+    background: linear-gradient(145deg, rgba(129, 148, 36, 0.85), rgba(17, 30, 99, 0.85));
+    color: #741a1a;
+    box-shadow: inset 0 0 22px rgba(0, 0, 0, 0.45), 0 10px 36px rgba(255, 0, 195, 0.18);
+}
+
+/* Styling for X and O (optional classes from JS) */
+.xplayer {
+    color: #ff4d6d;
+    text-shadow: 0 6px 18px rgba(255, 77, 109, 0.12);
+}
+
+.oplayer {
+    color: #00eaff;
+    text-shadow: 0 6px 18px rgba(0, 234, 255, 0.12);
+}
+
+/* Footer / Restart */
+footer {
+    width: 100%;
+    height: 88px;
+    display: grid;
+    place-items: center;
+    margin-top: 18px;
+    background: transparent;
+}
+
+#restart {
+    font-size: 1.1rem;
+    height: 56px;
+    padding: 0 22px;
+    border-radius: 12px;
+    border: none;
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    color: #fff;
+    font-weight: 800;
+    box-shadow: 0 10px 34px rgba(255, 75, 43, 0.18);
+    transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.12s ease;
+    cursor: pointer;
+}
+
+/* Hover / Active for restart */
+#restart:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 44px rgba(255, 75, 43, 0.28);
+}
+
+#restart:active {
+    transform: none;
+    /* fixed size on press */
+    background: linear-gradient(135deg, #ff4b2b, #ff416c);
+    box-shadow: inset 0 0 14px rgba(0, 0, 0, 0.45), 0 12px 40px rgba(255, 65, 108, 0.22);
+}
+
+/* Jelly animation (used sparingly) */
+@keyframes jelly {
+    0% {
+        transform: scale(1, 1);
+    }
+
+    25% {
+        transform: scale(0.95, 1.05);
+    }
+
+    50% {
+        transform: scale(1.05, 0.95);
+    }
+
+    75% {
+        transform: scale(0.98, 1.02);
+    }
+
+    100% {
+        transform: scale(1, 1);
+    }
+}
+
+
+@media (max-width: 520px) {
+    .container {
+        width: min(92vw, 380px);
+    }
+
+    .players {
+        height: 80px;
+        padding: 8px;
+    }
+
+    .players button {
+        width: 78px;
+        height: 54px;
+        font-size: 1rem;
+    }
+
+    .container-btns {
+        gap: 8px;
+        padding: 10px;
+    }
+
+    .container-btns button {
+        font-size: 1.8rem;
+        min-height: 68px;
+        border-radius: 8px;
+    }
+
+}
+
+
+.hide {
+    display: none !important;
+}
+
+.center {
+    display: grid;
+    place-items: center;
+}
